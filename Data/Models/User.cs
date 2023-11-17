@@ -16,7 +16,7 @@ namespace Data.Models
         public string Lastname { get; set; }
         public string Adress { get; set; }
         public string Email { get; set; }
-        public bool PrivateUser { get; set; }
+        public bool PrivateUser { get; set; } 
         public virtual ICollection<ProjectsUsers> Projects { get; set; }
 
 
