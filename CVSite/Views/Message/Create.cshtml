@@ -1,0 +1,97 @@
+﻿@model CVSite.Models.MessageModels
+
+@*<body>*@
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Send a message</h4>
+            <hr />
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Innehåll, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Innehåll, new { htmlAttributes = new { @ID = "INNEHÅL", @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Innehåll, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.MottagareNamn, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.MottagareNamn, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.MottagareNamn, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @if (Model.SkickasAv != null)
+            {
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SkickasAv, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.SkickasAv, new { htmlAttributes = new { @ID = "SKICKAAV", @class = "form-control", @readonly = "readonly" } })
+                        @Html.ValidationMessageFor(model => model.SkickasAv, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SkickasAv, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.SkickasAv, new { htmlAttributes = new { @ID = "SKICKAAV", @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.SkickasAv, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            }
+
+            <div class="form-group">
+
+                <div class="col-md-10">
+                    @Html.HiddenFor(model => model.Mottagare)
+                </div>
+            </div>
+
+
+        </div>
+
+    }
+
+           <button class="MessageSend" data-id="@Model.Mottagare"> Send Message </button>
+
+
+
+
+
+
+    @section Scripts {
+        <script>
+            $('.MessageSend').click(function () {
+                var MottagareID = $(this).data('id');
+                var Innehåll = $('#INNEHÅL').val();
+                var SkickasAv = $('#SKICKAAV').val();
+
+                if (Innehåll.length < 3 || SkickasAv.length < 2) {
+                    window.alert('Check the fields.')
+                
+
+
+                }
+                else
+                    $.get('/api/SendAPI/' + MottagareID + '/' + Innehåll + '/' + SkickasAv, function () {
+                        window.alert('Meddelandet har skickats');
+                        window.location.reload();
+
+                    })
+            });
+
+
+        </script>
+
+
+        @Scripts.Render("~/bundles/jqueryval")
+
+    }
+      

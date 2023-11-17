@@ -1,0 +1,156 @@
+﻿@model CVSite.Models.ResumeModels
+
+@{
+    ViewBag.Title = "CreateResume";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<body>
+    @if (null != TempData["alertMessage"])
+    {
+        <script type="text/javascript">
+                alert('@TempData["alertMessage"]');
+        </script>
+    }
+    @using (Html.BeginForm("Upload", "Resume", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+
+        <div>
+            <h3>Edit Your Resume</h3>
+            <br />
+            <img src="@ViewBag.Path" alt="Photo could not be loaded" style="border-radius: 40%" , width="200px" />
+        </div>
+        <br />
+        <div style="display: inline-block">
+            Choose File: <input type="file" name="fileUpload" accept="image/png, image/gif, image/jpeg" />
+
+            <input type="submit" value="Upload" />
+        </div>
+    }
+    <br />    <br />    <br />    <br />
+
+    @using (Html.BeginForm("UpdateResume", "Resume", FormMethod.Post))
+    {
+<div id="content">
+    <div class="1">
+        <h4>Educations:</h4>
+        <ul>
+            @foreach (var item in Model.Education)
+            {
+             
+            <input type="submit" name="actionType" value="Delete education @item.Title" />
+           
+            }
+            <br />
+            <br />
+            <br />
+            <tr>
+                <td>
+                   @Html.DropDownList("Education", (IEnumerable<SelectListItem>)   ViewData["EducationsDB"])
+                    <input type="submit" name="actionType" value="Add Education" />
+                    @Html.ActionLink("Add", "Create", "Education")
+                </td>
+            </tr>
+        </ul>
+    </div>
+    <div class="2">
+        <h4>Experience:</h4>
+        <ul>
+            @foreach (var item in Model.Experiences)
+            {
+             
+                     <input type="submit" name="actionType" value="Delete Experience @item.Titel" />
+           
+            }
+            <br />
+            <br />    <tr>
+                <td>
+                    @Html.DropDownList("Experineces", (IEnumerable<SelectListItem>)ViewData["ExperienceDB"])
+                    <input type="submit" name="actionType" value="Add Experience" />
+                    @Html.ActionLink("Add", "Create", "Experiences")
+
+                </td>
+            </tr>
+        </ul>
+    </div>
+    <div class="3">
+        <h4>Skills:</h4>
+        <ul>
+            @foreach (var item in Model.Skill)
+            {
+            
+                  <input type="submit" name="actionType" value="Delete skills @item.Title" />
+            
+            }
+            <br />
+            <br />
+            <tr>
+                <td>
+                    @Html.DropDownList("Skills", (IEnumerable<SelectListItem>)ViewData["SkillsDB"])
+                    <input type="submit" name="actionType" value="Add skill" />
+                    @Html.ActionLink("Add", "Create", "Skills")
+
+                </td>
+            </tr>
+        </ul>
+    </div>
+</div>
+                }
+
+                <h1>Projects:</h1>
+                <table class="table">
+                    <tr>
+                        <th>Creator</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                    </tr>
+                    @using (Html.BeginForm("Create Resume", "Resume", FormMethod.Post))
+                    {
+                        foreach (var item in Model.Project)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.User.Firstname)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Title)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Description)
+                                </td>
+                                @if (item.Creator != ViewBag.Id)
+                                {
+                                    <td>
+                                        <input type="button" value="Leave" onclick="location.href='@Url.Action("Remove", "Resume", new { id = item.ProjectID })'" />
+                                    </td>
+                                }
+                                @if (item.Creator == ViewBag.Id)
+                                {
+                                    <td>
+
+                                        @Html.ActionLink("Edit", "Edit", "Projects", new { id = item.ProjectID }, null) |
+                                        @Html.ActionLink("Delete", "Delete", "Projects", new { id = item.ProjectID }, null)
+                                    </td>
+                                }
+                            </tr>
+
+                        }
+
+
+
+                    }
+
+                <style>
+                    body {
+                        background-color: lightblue;
+                        text-align: center;
+                    }
+
+                    #content {
+                        display: grid;
+                        grid-template-columns: 33.3% 33.3% 33.3%;
+                        max-width: 960px;
+                        margin: 0auto;
+                        column-gap: 3rem;
+                    }
+                </style>
+    </body>

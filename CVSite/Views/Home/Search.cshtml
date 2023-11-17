@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Data.Models.User>
+
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+<body>
+<h2>Search</h2>
+
+<p>
+    @using (Html.BeginForm("Search", "Home", FormMethod.Get))
+    {
+        @Html.TextBox("searchString")
+        <input type="submit" value="Search" />
+    }
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Firstname)
+        </th>
+         <th>Resume</th>
+   </tr>
+
+    <tbody>
+        @if (Model.Count() == 0)
+        {
+            <tr>
+                <td colspan="3" style="color:blueviolet"> There are no matching results</td>
+
+            </tr>
+        }
+
+        @foreach (var item in Model)
+        {
+
+            if (ViewBag.Id != null)
+            {
+                <tr>
+                    <td>@item.Firstname @item.Lastname</td>
+                    <td> @Html.RouteLink("Read more", "ShowUserResume", new { userid = item.UserID })</td>
+                </tr>
+            }
+            if (ViewBag.Id == null && item.PrivateUser == false)
+            {
+                <tr>
+                    <td>@item.Firstname @item.Lastname</td>
+                    <td> @Html.RouteLink("Read more", "ShowUserResume", new { userid = item.UserID })</td>
+                </tr>
+            }
+        }
+
+
+    </tbody>
+</table>
+<style>
+    body {
+        background-color: lightblue;
+    }
+</style>
+</body>

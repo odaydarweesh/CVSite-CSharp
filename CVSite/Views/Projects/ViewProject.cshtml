@@ -1,0 +1,88 @@
+﻿@model IEnumerable<CVSite.Models.ProjectModels>
+
+@{ ViewBag.Title = "Projects in the system"; }
+<body>
+<h2>Project</h2>
+@if (ViewBag.Id != null)
+{
+    <p>
+        @Html.ActionLink("Create New Project", "Create")
+    </p>}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Creator)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            <p4>Participations</p4>
+        </th>
+        <th>
+            <p4>Join/Leave</p4>
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Creator)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @if (ViewBag.Id != null)
+                {
+                    @Html.DropDownList("Participations", new SelectList(item.Users, "Firstname")) }
+                else if (ViewBag.Id == null)
+                {
+                    @Html.DropDownList("Participations", new SelectList(item.PublicUser, "Firstname"))}
+            </td>
+            @if (item.CreatID == ViewBag.Id)
+            {
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ProjektId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ProjektId })
+                </td>
+            }
+            else if (ViewBag.Id != null && item.CreatID != ViewBag.Id)
+            {
+
+                if (!ViewBag.Projects.Contains(item.ProjektId.ToString()))
+                {
+
+                    <td>
+                        <input type="button" value="Join" onclick="location.href='@Url.Action("Insert", "Projects", new {id = item.ProjektId})'" />
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        <input type="button" value="Leave" onclick="location.href='@Url.Action("Remove", "Projects", new {id = item.ProjektId})'" />
+                    </td>
+                }
+
+
+            }
+
+
+        </tr>
+    }
+
+</table>
+
+<style>
+    body {
+        background-color: lightblue;
+    }
+</style>
+</body>

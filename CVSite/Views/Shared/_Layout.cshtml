@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<body>
+    <head>
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>@ViewData["Title"] - CV_Site</title>
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+        @*<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />*@
+    </head>
+    @{
+        string menuTextColor = "text-white";
+    }
+    <body>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a asp-page="/Index" class="navbar-brand">CVSite</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Project", "ViewProject", "Projects")</li>
+
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li>@Html.ActionLink("Resume", "CreateResume", "Resume")</li>
+                        }
+                        <li>@Html.ActionLink("Search", "Search", "Home")</li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li>  @Html.ActionLink("Message", "Index", "Message")  </li>
+                            <li> <h4 id="antalMsg"></h4> </li>
+                        }
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
+            </div>
+
+        </nav>
+
+
+
+        <div class="container">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+        <footer class="border-top footer text-muted" style="background:linear-gradient(to left,#28340B,#197696);">
+            <div class="container @menuTextColor">
+                &copy; 2022 - CVSite - <a asp-area="" asp-controller="Home" asp-action="Privacy" class="@menuTextColor">Privacy</a>
+            </div>
+        </footer>
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+        @Scripts.Render("~/bundles/jqueryval")
+
+
+        <script>
+var inloggad = @User.Identity.IsAuthenticated.ToString().ToLower();
+        if (inloggad) {$.get('/api/GetApi/', function (data)
+            {$('#antalMsg').append(data);
+            })} </script>
+
+
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+
+
+</html>
+<style>
+    body {
+        background-color: lightblue;
+    }
+</style>
+</body>

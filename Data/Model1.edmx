@@ -1,0 +1,1042 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Educations">
+          <Key>
+            <PropertyRef Name="EduID" />
+          </Key>
+          <Property Name="EduID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ExperienceResumes">
+          <Key>
+            <PropertyRef Name="Experience_ExperienceID" />
+            <PropertyRef Name="Resume_ResumneID" />
+          </Key>
+          <Property Name="Experience_ExperienceID" Type="int" Nullable="false" />
+          <Property Name="Resume_ResumneID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Experiences">
+          <Key>
+            <PropertyRef Name="ExperienceID" />
+          </Key>
+          <Property Name="ExperienceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Titel" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Messages">
+          <Key>
+            <PropertyRef Name="MessageID" />
+          </Key>
+          <Property Name="MessageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Content" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Photos">
+          <Key>
+            <PropertyRef Name="PhotoID" />
+          </Key>
+          <Property Name="PhotoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Url" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Projects">
+          <Key>
+            <PropertyRef Name="ProjectID" />
+          </Key>
+          <Property Name="ProjectID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Creator" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProjectsUsers">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="ProjectID" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="ProjectID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ResumeEducations">
+          <Key>
+            <PropertyRef Name="Resume_ResumneID" />
+            <PropertyRef Name="Education_EduID" />
+          </Key>
+          <Property Name="Resume_ResumneID" Type="int" Nullable="false" />
+          <Property Name="Education_EduID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Resumes">
+          <Key>
+            <PropertyRef Name="ResumneID" />
+          </Key>
+          <Property Name="ResumneID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="ImageID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SkillResumes">
+          <Key>
+            <PropertyRef Name="Skill_SkillID" />
+            <PropertyRef Name="Resume_ResumneID" />
+          </Key>
+          <Property Name="Skill_SkillID" Type="int" Nullable="false" />
+          <Property Name="Resume_ResumneID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Skills">
+          <Key>
+            <PropertyRef Name="SkillID" />
+          </Key>
+          <Property Name="SkillID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserMessages">
+          <Key>
+            <PropertyRef Name="RecievingUser" />
+            <PropertyRef Name="MessageID" />
+          </Key>
+          <Property Name="RecievingUser" Type="int" Nullable="false" />
+          <Property Name="MessageID" Type="int" Nullable="false" />
+          <Property Name="Read" Type="bit" Nullable="false" />
+          <Property Name="Sender" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Firstname" Type="nvarchar(max)" />
+          <Property Name="Lastname" Type="nvarchar(max)" />
+          <Property Name="Adress" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="PrivateUser" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ExperienceResumes_dbo_Experiences_Experience_ExperienceID">
+          <End Role="Experiences" Type="Self.Experiences" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ExperienceResumes" Type="Self.ExperienceResumes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Experiences">
+              <PropertyRef Name="ExperienceID" />
+            </Principal>
+            <Dependent Role="ExperienceResumes">
+              <PropertyRef Name="Experience_ExperienceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ExperienceResumes_dbo_Resumes_Resume_ResumneID">
+          <End Role="Resumes" Type="Self.Resumes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ExperienceResumes" Type="Self.ExperienceResumes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resumes">
+              <PropertyRef Name="ResumneID" />
+            </Principal>
+            <Dependent Role="ExperienceResumes">
+              <PropertyRef Name="Resume_ResumneID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Projects_dbo_Users_Creator">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Projects" Type="Self.Projects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Projects">
+              <PropertyRef Name="Creator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ProjectsUsers_dbo_Projects_ProjectID">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="ProjectsUsers" Type="Self.ProjectsUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="ProjectID" />
+            </Principal>
+            <Dependent Role="ProjectsUsers">
+              <PropertyRef Name="ProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ProjectsUsers_dbo_Users_UserID">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="ProjectsUsers" Type="Self.ProjectsUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="ProjectsUsers">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ResumeEducations_dbo_Educations_Education_EduID">
+          <End Role="Educations" Type="Self.Educations" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ResumeEducations" Type="Self.ResumeEducations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Educations">
+              <PropertyRef Name="EduID" />
+            </Principal>
+            <Dependent Role="ResumeEducations">
+              <PropertyRef Name="Education_EduID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ResumeEducations_dbo_Resumes_Resume_ResumneID">
+          <End Role="Resumes" Type="Self.Resumes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ResumeEducations" Type="Self.ResumeEducations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resumes">
+              <PropertyRef Name="ResumneID" />
+            </Principal>
+            <Dependent Role="ResumeEducations">
+              <PropertyRef Name="Resume_ResumneID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Resumes_dbo_Photos_ImageID">
+          <End Role="Photos" Type="Self.Photos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Resumes" Type="Self.Resumes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Photos">
+              <PropertyRef Name="PhotoID" />
+            </Principal>
+            <Dependent Role="Resumes">
+              <PropertyRef Name="ImageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Resumes_dbo_Users_UserID">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Resumes" Type="Self.Resumes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Resumes">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_SkillResumes_dbo_Resumes_Resume_ResumneID">
+          <End Role="Resumes" Type="Self.Resumes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SkillResumes" Type="Self.SkillResumes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resumes">
+              <PropertyRef Name="ResumneID" />
+            </Principal>
+            <Dependent Role="SkillResumes">
+              <PropertyRef Name="Resume_ResumneID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_SkillResumes_dbo_Skills_Skill_SkillID">
+          <End Role="Skills" Type="Self.Skills" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SkillResumes" Type="Self.SkillResumes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Skills">
+              <PropertyRef Name="SkillID" />
+            </Principal>
+            <Dependent Role="SkillResumes">
+              <PropertyRef Name="Skill_SkillID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_UserMessages_dbo_Messages_MessageID">
+          <End Role="Messages" Type="Self.Messages" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UserMessages" Type="Self.UserMessages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Messages">
+              <PropertyRef Name="MessageID" />
+            </Principal>
+            <Dependent Role="UserMessages">
+              <PropertyRef Name="MessageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_UserMessages_dbo_Users_RecievingUser">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UserMessages" Type="Self.UserMessages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserMessages">
+              <PropertyRef Name="RecievingUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Educations" EntityType="Self.Educations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExperienceResumes" EntityType="Self.ExperienceResumes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Experiences" EntityType="Self.Experiences" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Messages" EntityType="Self.Messages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Photos" EntityType="Self.Photos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Projects" EntityType="Self.Projects" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProjectsUsers" EntityType="Self.ProjectsUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ResumeEducations" EntityType="Self.ResumeEducations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Resumes" EntityType="Self.Resumes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SkillResumes" EntityType="Self.SkillResumes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Skills" EntityType="Self.Skills" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserMessages" EntityType="Self.UserMessages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ExperienceResumes_dbo_Experiences_Experience_ExperienceID" Association="Self.FK_dbo_ExperienceResumes_dbo_Experiences_Experience_ExperienceID">
+            <End Role="Experiences" EntitySet="Experiences" />
+            <End Role="ExperienceResumes" EntitySet="ExperienceResumes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ExperienceResumes_dbo_Resumes_Resume_ResumneID" Association="Self.FK_dbo_ExperienceResumes_dbo_Resumes_Resume_ResumneID">
+            <End Role="Resumes" EntitySet="Resumes" />
+            <End Role="ExperienceResumes" EntitySet="ExperienceResumes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Projects_dbo_Users_Creator" Association="Self.FK_dbo_Projects_dbo_Users_Creator">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Projects" EntitySet="Projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ProjectsUsers_dbo_Projects_ProjectID" Association="Self.FK_dbo_ProjectsUsers_dbo_Projects_ProjectID">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="ProjectsUsers" EntitySet="ProjectsUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ProjectsUsers_dbo_Users_UserID" Association="Self.FK_dbo_ProjectsUsers_dbo_Users_UserID">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="ProjectsUsers" EntitySet="ProjectsUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ResumeEducations_dbo_Educations_Education_EduID" Association="Self.FK_dbo_ResumeEducations_dbo_Educations_Education_EduID">
+            <End Role="Educations" EntitySet="Educations" />
+            <End Role="ResumeEducations" EntitySet="ResumeEducations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ResumeEducations_dbo_Resumes_Resume_ResumneID" Association="Self.FK_dbo_ResumeEducations_dbo_Resumes_Resume_ResumneID">
+            <End Role="Resumes" EntitySet="Resumes" />
+            <End Role="ResumeEducations" EntitySet="ResumeEducations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Resumes_dbo_Photos_ImageID" Association="Self.FK_dbo_Resumes_dbo_Photos_ImageID">
+            <End Role="Photos" EntitySet="Photos" />
+            <End Role="Resumes" EntitySet="Resumes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Resumes_dbo_Users_UserID" Association="Self.FK_dbo_Resumes_dbo_Users_UserID">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Resumes" EntitySet="Resumes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_SkillResumes_dbo_Resumes_Resume_ResumneID" Association="Self.FK_dbo_SkillResumes_dbo_Resumes_Resume_ResumneID">
+            <End Role="Resumes" EntitySet="Resumes" />
+            <End Role="SkillResumes" EntitySet="SkillResumes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_SkillResumes_dbo_Skills_Skill_SkillID" Association="Self.FK_dbo_SkillResumes_dbo_Skills_Skill_SkillID">
+            <End Role="Skills" EntitySet="Skills" />
+            <End Role="SkillResumes" EntitySet="SkillResumes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_UserMessages_dbo_Messages_MessageID" Association="Self.FK_dbo_UserMessages_dbo_Messages_MessageID">
+            <End Role="Messages" EntitySet="Messages" />
+            <End Role="UserMessages" EntitySet="UserMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_UserMessages_dbo_Users_RecievingUser" Association="Self.FK_dbo_UserMessages_dbo_Users_RecievingUser">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserMessages" EntitySet="UserMessages" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="Educations">
+          <Key>
+            <PropertyRef Name="EduID" />
+          </Key>
+          <Property Name="EduID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Resumes" Relationship="Self.ResumeEducations" FromRole="Educations" ToRole="Resumes" />
+        </EntityType>
+        <EntityType Name="Experiences">
+          <Key>
+            <PropertyRef Name="ExperienceID" />
+          </Key>
+          <Property Name="ExperienceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titel" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Resumes" Relationship="Self.ExperienceResumes" FromRole="Experiences" ToRole="Resumes" />
+        </EntityType>
+        <EntityType Name="Messages">
+          <Key>
+            <PropertyRef Name="MessageID" />
+          </Key>
+          <Property Name="MessageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="UserMessages" Relationship="Self.FK_dbo_UserMessages_dbo_Messages_MessageID" FromRole="Messages" ToRole="UserMessages" />
+        </EntityType>
+        <EntityType Name="Photos">
+          <Key>
+            <PropertyRef Name="PhotoID" />
+          </Key>
+          <Property Name="PhotoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Url" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Resumes" Relationship="Self.FK_dbo_Resumes_dbo_Photos_ImageID" FromRole="Photos" ToRole="Resumes" />
+        </EntityType>
+        <EntityType Name="Projects">
+          <Key>
+            <PropertyRef Name="ProjectID" />
+          </Key>
+          <Property Name="ProjectID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Creator" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_dbo_Projects_dbo_Users_Creator" FromRole="Projects" ToRole="Users" />
+          <NavigationProperty Name="Users1" Relationship="Self.ProjectsUsers" FromRole="Projects" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Resumes">
+          <Key>
+            <PropertyRef Name="ResumneID" />
+          </Key>
+          <Property Name="ResumneID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="ImageID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Photos" Relationship="Self.FK_dbo_Resumes_dbo_Photos_ImageID" FromRole="Resumes" ToRole="Photos" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_dbo_Resumes_dbo_Users_UserID" FromRole="Resumes" ToRole="Users" />
+          <NavigationProperty Name="Experiences" Relationship="Self.ExperienceResumes" FromRole="Resumes" ToRole="Experiences" />
+          <NavigationProperty Name="Educations" Relationship="Self.ResumeEducations" FromRole="Resumes" ToRole="Educations" />
+          <NavigationProperty Name="Skills" Relationship="Self.SkillResumes" FromRole="Resumes" ToRole="Skills" />
+        </EntityType>
+        <EntityType Name="Skills">
+          <Key>
+            <PropertyRef Name="SkillID" />
+          </Key>
+          <Property Name="SkillID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Resumes" Relationship="Self.SkillResumes" FromRole="Skills" ToRole="Resumes" />
+        </EntityType>
+        <EntityType Name="UserMessages">
+          <Key>
+            <PropertyRef Name="RecievingUser" />
+            <PropertyRef Name="MessageID" />
+          </Key>
+          <Property Name="RecievingUser" Type="Int32" Nullable="false" />
+          <Property Name="MessageID" Type="Int32" Nullable="false" />
+          <Property Name="Read" Type="Boolean" Nullable="false" />
+          <Property Name="Sender" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Messages" Relationship="Self.FK_dbo_UserMessages_dbo_Messages_MessageID" FromRole="UserMessages" ToRole="Messages" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_dbo_UserMessages_dbo_Users_RecievingUser" FromRole="UserMessages" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Firstname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Lastname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Adress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PrivateUser" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Projects" Relationship="Self.FK_dbo_Projects_dbo_Users_Creator" FromRole="Users" ToRole="Projects" />
+          <NavigationProperty Name="Resumes" Relationship="Self.FK_dbo_Resumes_dbo_Users_UserID" FromRole="Users" ToRole="Resumes" />
+          <NavigationProperty Name="UserMessages" Relationship="Self.FK_dbo_UserMessages_dbo_Users_RecievingUser" FromRole="Users" ToRole="UserMessages" />
+          <NavigationProperty Name="Projects1" Relationship="Self.ProjectsUsers" FromRole="Users" ToRole="Projects" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_UserMessages_dbo_Messages_MessageID">
+          <End Role="Messages" Type="Self.Messages" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UserMessages" Type="Self.UserMessages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Messages">
+              <PropertyRef Name="MessageID" />
+            </Principal>
+            <Dependent Role="UserMessages">
+              <PropertyRef Name="MessageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Resumes_dbo_Photos_ImageID">
+          <End Role="Photos" Type="Self.Photos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Resumes" Type="Self.Resumes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Photos">
+              <PropertyRef Name="PhotoID" />
+            </Principal>
+            <Dependent Role="Resumes">
+              <PropertyRef Name="ImageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Projects_dbo_Users_Creator">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Projects" Type="Self.Projects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Projects">
+              <PropertyRef Name="Creator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Resumes_dbo_Users_UserID">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Resumes" Type="Self.Resumes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Resumes">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_UserMessages_dbo_Users_RecievingUser">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UserMessages" Type="Self.UserMessages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserMessages">
+              <PropertyRef Name="RecievingUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+        </Association>
+        <Association Name="ExperienceResumes">
+          <End Role="Experiences" Type="Self.Experiences" Multiplicity="*" />
+          <End Role="Resumes" Type="Self.Resumes" Multiplicity="*" />
+        </Association>
+        <Association Name="ProjectsUsers">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="*" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+        </Association>
+        <Association Name="ResumeEducations">
+          <End Role="Educations" Type="Self.Educations" Multiplicity="*" />
+          <End Role="Resumes" Type="Self.Resumes" Multiplicity="*" />
+        </Association>
+        <Association Name="SkillResumes">
+          <End Role="Resumes" Type="Self.Resumes" Multiplicity="*" />
+          <End Role="Skills" Type="Self.Skills" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
+          <EntitySet Name="Educations" EntityType="Self.Educations" />
+          <EntitySet Name="Experiences" EntityType="Self.Experiences" />
+          <EntitySet Name="Messages" EntityType="Self.Messages" />
+          <EntitySet Name="Photos" EntityType="Self.Photos" />
+          <EntitySet Name="Projects" EntityType="Self.Projects" />
+          <EntitySet Name="Resumes" EntityType="Self.Resumes" />
+          <EntitySet Name="Skills" EntityType="Self.Skills" />
+          <EntitySet Name="UserMessages" EntityType="Self.UserMessages" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_UserMessages_dbo_Messages_MessageID" Association="Self.FK_dbo_UserMessages_dbo_Messages_MessageID">
+            <End Role="Messages" EntitySet="Messages" />
+            <End Role="UserMessages" EntitySet="UserMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Resumes_dbo_Photos_ImageID" Association="Self.FK_dbo_Resumes_dbo_Photos_ImageID">
+            <End Role="Photos" EntitySet="Photos" />
+            <End Role="Resumes" EntitySet="Resumes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Projects_dbo_Users_Creator" Association="Self.FK_dbo_Projects_dbo_Users_Creator">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Projects" EntitySet="Projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Resumes_dbo_Users_UserID" Association="Self.FK_dbo_Resumes_dbo_Users_UserID">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Resumes" EntitySet="Resumes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_UserMessages_dbo_Users_RecievingUser" Association="Self.FK_dbo_UserMessages_dbo_Users_RecievingUser">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserMessages" EntitySet="UserMessages" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <AssociationSet Name="ExperienceResumes" Association="Self.ExperienceResumes">
+            <End Role="Experiences" EntitySet="Experiences" />
+            <End Role="Resumes" EntitySet="Resumes" />
+          </AssociationSet>
+          <AssociationSet Name="ProjectsUsers" Association="Self.ProjectsUsers">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="ResumeEducations" Association="Self.ResumeEducations">
+            <End Role="Educations" EntitySet="Educations" />
+            <End Role="Resumes" EntitySet="Resumes" />
+          </AssociationSet>
+          <AssociationSet Name="SkillResumes" Association="Self.SkillResumes">
+            <End Role="Resumes" EntitySet="Resumes" />
+            <End Role="Skills" EntitySet="Skills" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="Model.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="Model.AspNetRoles">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="Model.AspNetUserClaims">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="Model.AspNetUserLogins">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="Model.AspNetUsers">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Educations">
+            <EntityTypeMapping TypeName="Model.Educations">
+              <MappingFragment StoreEntitySet="Educations">
+                <ScalarProperty Name="EduID" ColumnName="EduID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Experiences">
+            <EntityTypeMapping TypeName="Model.Experiences">
+              <MappingFragment StoreEntitySet="Experiences">
+                <ScalarProperty Name="ExperienceID" ColumnName="ExperienceID" />
+                <ScalarProperty Name="Titel" ColumnName="Titel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Messages">
+            <EntityTypeMapping TypeName="Model.Messages">
+              <MappingFragment StoreEntitySet="Messages">
+                <ScalarProperty Name="MessageID" ColumnName="MessageID" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Photos">
+            <EntityTypeMapping TypeName="Model.Photos">
+              <MappingFragment StoreEntitySet="Photos">
+                <ScalarProperty Name="PhotoID" ColumnName="PhotoID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Projects">
+            <EntityTypeMapping TypeName="Model.Projects">
+              <MappingFragment StoreEntitySet="Projects">
+                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Creator" ColumnName="Creator" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Resumes">
+            <EntityTypeMapping TypeName="Model.Resumes">
+              <MappingFragment StoreEntitySet="Resumes">
+                <ScalarProperty Name="ResumneID" ColumnName="ResumneID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Skills">
+            <EntityTypeMapping TypeName="Model.Skills">
+              <MappingFragment StoreEntitySet="Skills">
+                <ScalarProperty Name="SkillID" ColumnName="SkillID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserMessages">
+            <EntityTypeMapping TypeName="Model.UserMessages">
+              <MappingFragment StoreEntitySet="UserMessages">
+                <ScalarProperty Name="RecievingUser" ColumnName="RecievingUser" />
+                <ScalarProperty Name="MessageID" ColumnName="MessageID" />
+                <ScalarProperty Name="Read" ColumnName="Read" />
+                <ScalarProperty Name="Sender" ColumnName="Sender" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="Model.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+                <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PrivateUser" ColumnName="PrivateUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="Model.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="ExperienceResumes" TypeName="Model.ExperienceResumes" StoreEntitySet="ExperienceResumes">
+            <EndProperty Name="Experiences">
+              <ScalarProperty Name="ExperienceID" ColumnName="Experience_ExperienceID" />
+            </EndProperty>
+            <EndProperty Name="Resumes">
+              <ScalarProperty Name="ResumneID" ColumnName="Resume_ResumneID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="ProjectsUsers" TypeName="Model.ProjectsUsers" StoreEntitySet="ProjectsUsers">
+            <EndProperty Name="Projects">
+              <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+            </EndProperty>
+            <EndProperty Name="Users">
+              <ScalarProperty Name="UserID" ColumnName="UserID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="ResumeEducations" TypeName="Model.ResumeEducations" StoreEntitySet="ResumeEducations">
+            <EndProperty Name="Educations">
+              <ScalarProperty Name="EduID" ColumnName="Education_EduID" />
+            </EndProperty>
+            <EndProperty Name="Resumes">
+              <ScalarProperty Name="ResumneID" ColumnName="Resume_ResumneID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="SkillResumes" TypeName="Model.SkillResumes" StoreEntitySet="SkillResumes">
+            <EndProperty Name="Resumes">
+              <ScalarProperty Name="ResumneID" ColumnName="Resume_ResumneID" />
+            </EndProperty>
+            <EndProperty Name="Skills">
+              <ScalarProperty Name="SkillID" ColumnName="Skill_SkillID" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

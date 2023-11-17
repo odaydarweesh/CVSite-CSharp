@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="782a4f559a894b6380e9f3c0d8958f04" Name="Diagram1" ZoomLevel="94">
+        <EntityTypeShape EntityType="Model.C__MigrationHistory" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.AspNetRoles" Width="1.5" PointX="4.875" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.AspNetUserClaims" Width="1.5" PointX="7.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.AspNetUserLogins" Width="1.5" PointX="7.25" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.AspNetUsers" Width="1.5" PointX="5" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Educations" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Experiences" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Messages" Width="1.5" PointX="7.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Photos" Width="1.5" PointX="0.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Projects" Width="1.5" PointX="1.5" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Resumes" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Skills" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.UserMessages" Width="1.5" PointX="10" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Users" Width="1.5" PointX="0.75" PointY="9.5" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_dbo_UserMessages_dbo_Messages_MessageID" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_dbo_Resumes_dbo_Photos_ImageID" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_dbo_Projects_dbo_Users_Creator" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_dbo_Resumes_dbo_Users_UserID" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_dbo_UserMessages_dbo_Users_RecievingUser" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.AspNetUserRoles" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.ExperienceResumes" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.ProjectsUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.ResumeEducations" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SkillResumes" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Data.Models.User>
+@{
+    ViewBag.Title = "Home Page";
+
+}
+<body>
+    
+    <section>
+        <div id="content">
+
+            <div class="1">
+                <div class="card-header">
+                    <h2 class="my-0 font-weight-normal">
+                        @if (ViewBag.Count >= 1)
+                        {
+                            <a>@Html.RouteLink((string)(ViewBag.Name[0]), "ShowUserResume", new { userid = ViewBag.Oid[0] })  </a> <hr>
+                            <img src="/UploadedFiles/pngegg.png" class="img-fluid mx-auto" style="max-width: 100%" alt="Informatik-logga">
+                        }
+                    </h2>
+                </div>
+                <div class="card-body"><p></div>
+            </div>
+            <div class="2">
+                <div class="card-header">
+                    <h2 class="my-0 font-weight-normal">
+                        @if (ViewBag.Count >= 2)
+                        {
+                            <a>@Html.RouteLink((string)(ViewBag.Name[1]), "ShowUserResume", new { userid = ViewBag.Oid[1] })  </a> <hr>
+                            <img src="/UploadedFiles/pngegg.png" class="img-fluid mx-auto" style="max-width: 100%" alt="Informatik-logga">
+                        }
+                    </h2>
+                </div>
+                <div class="card-body"><p></div>
+              </div>
+            <div class="3">
+                <div class="card-header">
+                    <h2 class="my-0 font-weight-normal">
+                        @if (ViewBag.Count >= 3)
+                        {
+                            <a>@Html.RouteLink((string)(ViewBag.Name[2]), "ShowUserResume", new { userid = ViewBag.Oid[2] })  </a> <hr>
+                            <img src="/UploadedFiles/pngegg.png" class="img-fluid mx-auto" style="max-width: 100%" alt="Informatik-logga">
+                        }
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </section>
+  
+    <section>
+        <div class="card-header">
+              <h2>projetes</h2>
+
+                    <a href=@Url.Action("ViewProject", "Projects" )> @ViewBag.Projectnamn</a>
+
+                    @if (ViewBag.creator != null)
+                    {
+                        <p> Created by :  @ViewBag.creator </p>
+                    }
+                  </div>
+   </section>
+                <style>
+                    body {
+                        background-color: lightblue;
+                        text-align: center;
+                    }
+
+                    #content {
+                        display: grid;
+                        grid-template-columns: 33.3% 33.3% 33.3%;
+                        max-width: 960px;
+                        margin: 0auto;
+                        column-gap: 3rem;
+                    }
+                </style>
+
+</body>

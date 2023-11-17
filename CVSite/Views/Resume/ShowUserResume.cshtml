@@ -1,0 +1,93 @@
+﻿@model CVSite.Models.ResumeModels
+
+@{
+    ViewBag.Title = "ShowUserResume";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+  
+        <h2>Resume</h2>
+
+
+        <div>
+            <img src=@Model.PhotoURL alt="Profile photo could not be loaded" style="border-radius: 60%" , width="300px" />
+        </div>
+        <p>@Model.User</p>
+        <p>Adress: @Model.Adress</p>
+        <p>Epost: @Model.Mail</p>
+        <br />
+
+        <h4>Experience:</h4>
+        <ul>
+            @foreach (var item in Model.Experiences)
+            {
+                <li>
+                    @item.Titel
+                </li>
+
+            }
+        </ul>
+
+        <h4>Skill:</h4>
+        <ul>
+            @foreach (var skills in Model.Skill)
+            {
+                <li>
+                    @skills.Title
+                </li>
+
+            }
+        </ul>
+
+        <h4>Education:</h4>
+        <ul>
+            @foreach (var item in Model.Education)
+            {
+                <li>
+                    @item.Title
+                </li>
+
+            }
+   
+            
+
+    </ul>
+    <h4>participated:</h4>
+    <table class="table">
+        <tr>
+            <th>Creator</th>
+            <th>Title</th>
+            <th>Description</th>
+        </tr>
+        @foreach (var item in Model.Project)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.Firstname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+            </tr>
+        }
+           
+        
+               <div>
+                @{Html.RenderAction("Create", "Message", new { id = Model.IdUser });}
+            </div>
+       
+           
+    
+    </table>
+
+
+    
+  
+  
+  
+  
+

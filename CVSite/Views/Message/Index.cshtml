@@ -1,0 +1,56 @@
+﻿@model IEnumerable<CVSite.Models.MessageModels>
+
+@{
+    ViewBag.Title = "Index";
+}
+@*<body>*@
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Mark all messages as read", "MarkAllAsRead", new { userID = ViewBag.userID })
+
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Innehåll)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.Läst)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SkickasAv)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Innehåll)
+            </td>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.Läst)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SkickasAv)
+            </td>
+            <td>
+            <td>
+                @Html.ActionLink("Mark as read", "MarkAsRead", new { id = item.IdMeddelande }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.IdMeddelande })
+            </td>
+        </tr>
+    }
+    @*<style>
+        body {
+            background-color: lightblue;
+        }
+    </style>
+    </body>*@
+
+
+</table>
